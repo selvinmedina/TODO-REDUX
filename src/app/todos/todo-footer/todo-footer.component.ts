@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import * as actions from 'src/app/filtro/filtro.actions';
+import * as actionsFiltros from 'src/app/filtro/filtro.actions';
+import * as actionsTodos from 'src/app/todos/todo.actions';
 import { filtroReducer } from 'src/app/filtro/filtro.reducer';
 
 @Component({
@@ -10,8 +11,8 @@ import { filtroReducer } from 'src/app/filtro/filtro.reducer';
   styleUrls: ['./todo-footer.component.css'],
 })
 export class TodoFooterComponent implements OnInit {
-  filtroActual: actions.FiltrosValidos;
-  filtros: actions.FiltrosValidos[];
+  filtroActual: actionsFiltros.FiltrosValidos;
+  filtros: actionsFiltros.FiltrosValidos[];
 
   pendientes: number;
 
@@ -27,7 +28,11 @@ export class TodoFooterComponent implements OnInit {
     });
   }
 
-  cambiarFiltro(filtro: actions.FiltrosValidos) {
-    this.store.dispatch(actions.setFiltro({ filtro }));
+  cambiarFiltro(filtro: actionsFiltros.FiltrosValidos) {
+    this.store.dispatch(actionsFiltros.setFiltro({ filtro }));
+  }
+
+  limpiarComletados(){
+    this.store.dispatch(actionsTodos.limpiarCompletados())
   }
 }

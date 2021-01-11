@@ -42,6 +42,9 @@ const _todoReducer = createReducer(
     return state.map((todo) => {
       return { ...todo, completado };
     });
+  }),
+  on(actions.limpiarCompletados, (state) => {
+    return state.filter((todo) => !todo.completado);
   })
 );
 

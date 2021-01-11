@@ -18,3 +18,4 @@ export const completado = createAction(
   '[TODO] Completar',
   props<{ completado: boolean }>()
 );
+export const limpiarCompletados = createAction('[TODO] Limpiar Completados');
